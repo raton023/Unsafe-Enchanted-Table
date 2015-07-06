@@ -35,8 +35,6 @@ public void nouse(PlayerInteractEvent e){
 	public void encanto(InventoryClickEvent e){
 		if(e.getRawSlot() == 0&&e.getInventory().getName().equals("Enchant")){
 			Player p = (Player)e.getWhoClicked();
-			
-			//Block block = Bukkit.getWorld("world").getBlockAt(2, 1, 2);
 			Block block = enchanted.get("encanto");
 			int b=0;
 	        for(int i=0;i<3;i++){
@@ -57,11 +55,12 @@ public void nouse(PlayerInteractEvent e){
 	        	if(block.getRelative(-2,i,0).getType().equals(Material.BOOKSHELF)){b++;}
 	        	if(block.getRelative(-2,i,-1).getType().equals(Material.BOOKSHELF)){b++;}
 	        }
-			if( e.getCurrentItem().getType().name().equals("DIAMOND_SWORD")){
-			if(p.getExpToLevel() <b){
-				p.sendMessage("§a[Unsafe Enchanted Table] §4Nesesitas minimo "+b+" niveles.");//quitar msg luego
+	        if(b<15){return;}
+	        if(p.getExpToLevel() <b){
+				p.sendMessage("§a[Unsafe Enchanted Table] §4Nesesitas minimo "+b+" Lv de exp.");//quitar msg luego
 				return;
 			}
+if( e.getCurrentItem().getType().name().equals("DIAMOND_SWORD")){		
 			ItemStack espada = new ItemStack(Material.DIAMOND_SWORD);
 			espada.addUnsafeEnchantment(Enchantment.DAMAGE_ALL, b);
 			p.getWorld().playSound(p.getLocation(), Sound.FIREWORK_BLAST, 2, 1);
@@ -72,7 +71,5 @@ public void nouse(PlayerInteractEvent e){
 		    p.setLevel(teniaexp-b);
 		    p.sendMessage("§a[Unsafe Enchanted Table] §bSword enchanted with lots of damage.");
 		    return;
-	}}}
-
-
 }
+}}}
