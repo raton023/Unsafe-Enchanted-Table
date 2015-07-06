@@ -55,21 +55,105 @@ public void nouse(PlayerInteractEvent e){
 	        	if(block.getRelative(-2,i,0).getType().equals(Material.BOOKSHELF)){b++;}
 	        	if(block.getRelative(-2,i,-1).getType().equals(Material.BOOKSHELF)){b++;}
 	        }
-	        if(b<15){return;}
-	        if(p.getExpToLevel() <b){
-				p.sendMessage("§a[Unsafe Enchanted Table] §4Nesesitas minimo "+b+" Lv de exp.");//quitar msg luego
+	        if(b<20){return;}
+	        if(p.getExpToLevel() <b*2){
+				p.sendMessage("§a[Unsafe Enchanted Table] §4Nesesitas minimo "+b*2+" Lv de exp.");//quitar msg luego
 				return;
 			}
-if( e.getCurrentItem().getType().name().equals("DIAMOND_SWORD")){		
-			ItemStack espada = new ItemStack(Material.DIAMOND_SWORD);
-			espada.addUnsafeEnchantment(Enchantment.DAMAGE_ALL, b);
-			p.getWorld().playSound(p.getLocation(), Sound.FIREWORK_BLAST, 2, 1);
-			e.getView().setItem(0, espada);
-			int teniaexp=p.getLevel();
-		    p.setTotalExperience(0);
-		    p.setExp(0);
-		    p.setLevel(teniaexp-b);
-		    p.sendMessage("§a[Unsafe Enchanted Table] §bSword enchanted with lots of damage.");
-		    return;
-}
+	        if( e.getCurrentItem().getType().name().equals("DIAMOND_SWORD")){		
+				ItemStack espada = new ItemStack(Material.DIAMOND_SWORD);
+				espada.addUnsafeEnchantment(Enchantment.DAMAGE_ALL, b);
+				p.getWorld().playSound(p.getLocation(), Sound.FIREWORK_BLAST, 2, 1);
+				e.getView().setItem(0, espada);
+				int teniaexp=p.getLevel();
+			    p.setTotalExperience(0);
+			    p.setExp(0);
+			    p.setLevel(teniaexp-b);
+			    p.sendMessage("§a[Unsafe Enchanted Table] §bSword enchanted with lots of damage.");
+			    return;
+	}
+	        if( e.getCurrentItem().getType().name().equals("DIAMOND_PICKAXE")){		
+				ItemStack espada = new ItemStack(Material.DIAMOND_PICKAXE);
+				espada.addUnsafeEnchantment(Enchantment.DIG_SPEED, b);
+				p.getWorld().playSound(p.getLocation(), Sound.FIREWORK_BLAST, 2, 1);
+				e.getView().setItem(0, espada);
+				int teniaexp=p.getLevel();
+			    p.setTotalExperience(0);
+			    p.setExp(0);
+			    p.setLevel(teniaexp-b);
+			    p.sendMessage("§a[Unsafe Enchanted Table] §bSword enchanted with lots of damage.");
+			    return;
+	}
+	        if( e.getCurrentItem().getType().name().equals("DIAMOND_AXE")){		
+				ItemStack espada = new ItemStack(Material.DIAMOND_AXE);
+				espada.addUnsafeEnchantment(Enchantment.DIG_SPEED, b);
+				p.getWorld().playSound(p.getLocation(), Sound.FIREWORK_BLAST, 2, 1);
+				e.getView().setItem(0, espada);
+				int teniaexp=p.getLevel();
+			    p.setTotalExperience(0);
+			    p.setExp(0);
+			    p.setLevel(teniaexp-b);
+			    p.sendMessage("§a[Unsafe Enchanted Table] §bSword enchanted with lots of damage.");
+			    return;
+	}
+	        if( e.getCurrentItem().getType().name().equals("DIAMOND_CHESTPLATE")){		
+				ItemStack espada = new ItemStack(Material.DIAMOND_CHESTPLATE);
+				espada.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, b);
+				p.getWorld().playSound(p.getLocation(), Sound.FIREWORK_BLAST, 2, 1);
+				e.getView().setItem(0, espada);
+				int teniaexp=p.getLevel();
+			    p.setTotalExperience(0);
+			    p.setExp(0);
+			    p.setLevel(teniaexp-b);
+			    p.sendMessage("§a[Unsafe Enchanted Table] §bSword enchanted with lots of damage.");
+			    return;
+	}
+	        if( e.getCurrentItem().getType().name().equals("DIAMOND_HELMET")){		
+				ItemStack espada = new ItemStack(Material.DIAMOND_HELMET);
+				espada.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, b);
+				p.getWorld().playSound(p.getLocation(), Sound.FIREWORK_BLAST, 2, 1);
+				e.getView().setItem(0, espada);
+				int teniaexp=p.getLevel();
+			    p.setTotalExperience(0);
+			    p.setExp(0);
+			    p.setLevel(teniaexp-b);
+			    p.sendMessage("§a[Unsafe Enchanted Table] §bSword enchanted with lots of damage.");
+			    return;
+	}
+	        if( e.getCurrentItem().getType().name().equals("DIAMOND_LEGGINGS")){		
+				ItemStack espada = new ItemStack(Material.DIAMOND_LEGGINGS);
+				espada.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, b);
+				p.getWorld().playSound(p.getLocation(), Sound.FIREWORK_BLAST, 2, 1);
+				e.getView().setItem(0, espada);
+				int teniaexp=p.getLevel();
+			    p.setTotalExperience(0);
+			    p.setExp(0);
+			    p.setLevel(teniaexp-b);
+			    p.sendMessage("§a[Unsafe Enchanted Table] §bSword enchanted with lots of damage.");
+			    return;
+	}
+	        if( e.getCurrentItem().getType().name().equals("DIAMOND_BOOTS")){		
+				ItemStack espada = new ItemStack(Material.DIAMOND_BOOTS);
+				espada.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, b);
+				p.getWorld().playSound(p.getLocation(), Sound.FIREWORK_BLAST, 2, 1);
+				e.getView().setItem(0, espada);
+				int teniaexp=p.getLevel();
+			    p.setTotalExperience(0);
+			    p.setExp(0);
+			    p.setLevel(teniaexp-b);
+			    p.sendMessage("§a[Unsafe Enchanted Table] §bSword enchanted with lots of damage.");
+			    return;
+	}
+	        if( e.getCurrentItem().getType().name().equals("BOW")){		
+				ItemStack espada = new ItemStack(Material.BOW);
+				espada.addUnsafeEnchantment(Enchantment.ARROW_DAMAGE, b);
+				p.getWorld().playSound(p.getLocation(), Sound.FIREWORK_BLAST, 2, 1);
+				e.getView().setItem(0, espada);
+				int teniaexp=p.getLevel();
+			    p.setTotalExperience(0);
+			    p.setExp(0);
+			    p.setLevel(teniaexp-b);
+			    p.sendMessage("§a[Unsafe Enchanted Table] §bSword enchanted with lots of damage.");
+			    return;
+	}
 }}}
