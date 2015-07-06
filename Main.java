@@ -117,15 +117,6 @@ public class Main extends JavaPlugin implements Listener {
 			if (b < 20) {
 				return;
 			}
-			Map<Enchantment, Integer> ench = e.getCurrentItem()
-					.getEnchantments();
-			List<Enchantment> enchants = new ArrayList<>();
-			for (Enchantment en : ench.keySet()) {
-				enchants.add(en); // en.getName() me daria el puro nombre del
-									// encanto en sin el getname aparece con el
-									// id del encanto , encanto.
-			}
-			p.sendMessage(enchants.toString());
 			if (p.getExpToLevel() < b * 2) {
 				p.sendMessage("§a[Unsafe Enchanted Table] §4Nesesitas minimo "
 						+ b * 2 + " Lv de exp.");// quitar msg luego
@@ -134,13 +125,22 @@ public class Main extends JavaPlugin implements Listener {
 			if (!e.getCurrentItem().hasItemMeta()) {
 				return;
 			}
+			Map<Enchantment, Integer> ench = e.getCurrentItem()
+					.getEnchantments();
+			List<Enchantment> enchants = new ArrayList<>();
+			for (Enchantment en : ench.keySet()) {
+				enchants.add(en); // en.getName() me daria el puro nombre del
+									// encanto en sin el getname aparece con el
+									// id del encanto , encanto.
+			}
 
-			Material item = e.getCurrentItem().getType();
-			ItemStack espada = new ItemStack(item);
+			//Material item = e.getCurrentItem().getType();
+			ItemStack item = new ItemStack(e.getCurrentItem().getType());
 			// espada.addUnsafeEnchantment(Enchantment.DAMAGE_ALL, b);
-			espada.addUnsafeEnchantment(enchants.get(0), b);
+			for(int i=0;enchants.size()>i;i++){
+			item.addUnsafeEnchantment(enchants.get(i), b);}
 			p.getWorld().playSound(p.getLocation(), Sound.FIREWORK_BLAST, 2, 1);
-			e.getView().setItem(0, espada);
+			e.getView().setItem(0, item);
 			int teniaexp = p.getLevel();
 			p.setTotalExperience(0);
 			p.setExp(0);
