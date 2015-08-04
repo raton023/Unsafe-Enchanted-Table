@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
@@ -25,10 +26,18 @@ public class Main extends JavaPlugin implements Listener {
 	@Override
 	public void onEnable() {
 		getServer().getPluginManager().registerEvents(this, this);
-		saveDefaultConfig();
-		super.onEnable();
+		getConfig().options().copyDefaults(true);
+		saveConfig();
+		getServer().getPluginManager().registerEvents(new CarrosListener(), this);
+		getCommand("myhorse").setExecutor(new CarrosCommands());
 	}
-
+	@Override
+	public void onDisable() {//no deja agarrar getOnlinePlayers de aca por eso nesesitaremos poner el nombre del mundo xD
+		for(Player p : Bukkit.getServer().getWorld(getConfig().getString("mundo")).getPlayers()){
+		getConfig().set("players."+p.getName(),CarrosListener.duracion.get(p.getName()));
+		saveConfig();
+		}
+		}
 	@EventHandler
 	public void nouse(PlayerInteractEvent e) {
 		if (e.getClickedBlock() != null) {
@@ -48,7 +57,7 @@ public class Main extends JavaPlugin implements Listener {
 			Player p = (Player) e.getWhoClicked();
 			Block block = enchanted.get("encanto");
 			int b = 0;
-			for (int i = 0; i < 3; i++) {
+			for (int i = 0; i < getConfig().getInt("maxfloors"); i++) {
 				if (block.getRelative(-2, i, -2).getType()
 						.equals(Material.BOOKSHELF)) {
 					b++;
@@ -117,9 +126,9 @@ public class Main extends JavaPlugin implements Listener {
 			if (b < 20) {
 				return;
 			}
-			if (p.getExpToLevel() < b * 2) {
-				p.sendMessage("§a[Unsafe Enchanted Table] §4Nesesitas minimo "
-						+ b * 2 + " Lv de exp.");// quitar msg luego
+			if (p.getExpToLevel() < b*getConfig().getInt("expbybookshelf")) {
+				p.sendMessage("§a[Ender Enchanted Table] §4You need at least "
+						+ b * getConfig().getInt("expbybookshelf") + " Exp Levels.");// quitar msg luego
 				return;
 			}
 			if (!e.getCurrentItem().hasItemMeta()) {
@@ -138,17 +147,20 @@ public class Main extends JavaPlugin implements Listener {
 			ItemStack item = new ItemStack(e.getCurrentItem().getType());
 			// espada.addUnsafeEnchantment(Enchantment.DAMAGE_ALL, b);
 			for(int i=0;enchants.size()>i;i++){
-			item.addUnsafeEnchantment(enchants.get(i), b);}
+			item.addUnsafeEnchantment(enchants.get(i), b*getConfig().getInt("levelbybookshelf"));}
 			p.getWorld().playSound(p.getLocation(), Sound.FIREWORK_BLAST, 2, 1);
 			e.getView().setItem(0, item);
 			int teniaexp = p.getLevel();
 			p.setTotalExperience(0);
 			p.setExp(0);
-			p.setLevel(teniaexp - b);
-			p.sendMessage("§a[Unsafe Enchanted Table] §bSword enchanted with lots of damage.");
+			p.setLevel(teniaexp - b* getConfig().getInt("expbybookshelf"));
+			p.sendMessage("§a[Ender Enchanted Table] §bItem enchanted with lots of damage.");
 			return;
 
 		}
 	}
+	
+	
+	
+	
 }
- 
