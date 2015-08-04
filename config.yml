@@ -1,1 +1,18 @@
 
+# maxfloors - max bookshelf floors allowed.
+# expbybookshelf - experience cost by each bookshelf.
+# levelbybookshelf - enchant level gained by each bookshelf.
+# duraoro, durametal, duradiamante is the chunks that the armor will pass till break
+# mundo is the name of the world that the horse can be used
+# the values of duraoro duradiamante durametal will multiply by the durability level
+# if durability is 3 and duraoro is set to 50 then it will run 150 chunks till breaks.
+# first the armor will lost the enchant then it will breaks
+# duraoro is gold one durametal is iron one and duradiamante is diamond one
+maxfloors: 4
+expbybookshelf: 1
+levelbybookshelf: 1
+duraoro: 50
+durametal: 60
+duradiamante: 70
+mundo: 'darkplace'
+players:
