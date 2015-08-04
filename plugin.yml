@@ -1,4 +1,12 @@
 main: com.craftilandia.unsafeenchantedtable.Main
-name: UnsafeEnchantedTable
-version: 2
+name: Ender_Enchanted_Table
+version: 4
 author: raton023
+commands:
+    myhorse:
+        description: teleport your horse to you.
+        usage: /myhorse
+permissions:
+    anbuautos.mecanico:
+        description: los que pueden encantar motores para los autos.
+        default: true
